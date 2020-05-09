@@ -106,15 +106,14 @@ If you want to install Jenkins behind a reverse proxy with prefix, example: mysi
 
 # Passing Jenkins launcher parameters
 
-Argument you pass to docker running the jenkins image are passed to jenkins launcher, so you can run for sample:
+Arguments you pass to docker running the Jenkins image are passed to jenkins launcher, so for example you can run:
 ```
 docker run jenkins/jenkins:lts --version
 ```
-This will dump Jenkins version, just like when you run jenkins as an executable war.
+This will display the Jenkins version, just like when you run Jenkins as an executable war.
 
-You also can define jenkins arguments as `JENKINS_OPTS`. This is usefull to define a set of arguments to pass to jenkins launcher as you
-define a derived jenkins image based on the official one with some customized settings. The following sample Dockerfile uses this option
-to force use of HTTPS with a certificate included in the image
+You can also define Jenkins arguments via `JENKINS_OPTS`. This is useful for passing arguments to jenkins launcher when customizing a Jenkins image.
+The following sample Dockerfile uses this option to force use of HTTPS with a certificate included in the image.
 
 ```
 FROM jenkins/jenkins:lts
@@ -125,7 +124,7 @@ ENV JENKINS_OPTS --httpPort=-1 --httpsPort=8083 --httpsCertificate=/var/lib/jenk
 EXPOSE 8083
 ```
 
-You can also change the default slave agent port for jenkins by defining `JENKINS_SLAVE_AGENT_PORT` in a sample Dockerfile.
+You can also change the default slave agent port for Jenkins by defining `JENKINS_SLAVE_AGENT_PORT` in a sample Dockerfile.
 
 ```
 FROM jenkins/jenkins:lts
